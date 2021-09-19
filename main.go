@@ -2,8 +2,15 @@ package main
 
 import (
 	"fmt"
+	"pratt/lexer"
+	"pratt/parser"
 )
 
 func main() {
-	fmt.Println("Pratt-Parsing ...")
+	inp := "1 + 2 + 3 + 4 * 5 - 6"
+	lx := lexer.New(inp)
+	ps := parser.New(lx)
+	exp := ps.ParseMathExpression()
+
+	fmt.Println(exp.ExpressionString())
 }
